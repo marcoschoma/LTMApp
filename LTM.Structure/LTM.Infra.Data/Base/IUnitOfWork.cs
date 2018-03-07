@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
 
-namespace LTM.Infra.Data
+namespace LTM.Infra.Data.Base
 {
     public interface IUnitOfWork
     {

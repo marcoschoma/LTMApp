@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LTM.Infra.Data.Base
 {
-    class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private DbConnection _connection;
         private DbTransaction _transaction;

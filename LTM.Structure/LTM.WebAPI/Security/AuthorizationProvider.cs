@@ -1,9 +1,22 @@
-﻿using AspNet.Security.OpenIdConnect.Primitives;
+﻿
+using AspNet.Security.OpenIdConnect.Extensions;
+using AspNet.Security.OpenIdConnect.Primitives;
 using AspNet.Security.OpenIdConnect.Server;
+using LTM.Application.Services;
+using LTM.Domain.Commands.Handlers;
+using LTM.Domain.Entities;
+using LTM.Domain.Repositories;
+using LTM.Domain.Services;
+using LTM.Infra;
+using LTM.Infra.Data;
+using LTM.Infra.Data.Base;
+using LTM.Infra.Data.Contexts;
+using Microsoft.AspNetCore.Authentication;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using static AspNet.Security.OpenIdConnect.Primitives.OpenIdConnectConstants;
 
 namespace LTM.WebAPI.Security
 {
@@ -26,23 +39,23 @@ namespace LTM.WebAPI.Security
 
         public override async Task HandleTokenRequest(HandleTokenRequestContext context)
         {
-            /*NotificationResult result = null;
-            IUserApplicationService userApp = GetUserApp();
+            NotificationResult result = null;
+            var userService = GetUserService();
 
             if (context.Request.IsPasswordGrantType())
             {
-                result = await userApp.IsValidUsernameAndPasswordAsync(context.Request.Username, context.Request.Password);
+                result = await userService.IsValidUsernameAndPasswordAsync(context.Request.Username, context.Request.Password);
             }
             else if (context.Request.IsRefreshTokenGrantType())
             {
-                Guid idUser = new Guid(context.Ticket.Principal.GetClaim(ClaimTypes.NameIdentifier));
+                var idUser = new Guid(context.Ticket.Principal.GetClaim(ClaimTypes.NameIdentifier));
                 string username = context.Ticket.Principal.GetClaim(ClaimTypes.Name);
 
-                result = await userApp.IsValidUsernameAndTokenAsync(username, idUser);
+                result = await userService.IsValidUsernameAndTokenAsync(username, idUser);
             }
 
-            if (result.IsValid && result.Data == null && result.Messages.Any(x => x.Type == "warning"))
-                result.AddError(result.Messages.First(x => x.Type == "warning").Message);
+            if (result.IsValid && result.Data == null && result.Messages.Any(x => x.Type == NotificationResult.NotificationMessageType.Warning))
+                result.AddError(result.Messages.First(x => x.Type == NotificationResult.NotificationMessageType.Warning).Message);
 
             if (!result.IsValid)
             {
@@ -74,18 +87,16 @@ namespace LTM.WebAPI.Security
                 );
 
                 context.Validate(ticket);
-            }*/
+            }
         }
 
-        private IUserApplicationService GetUserApp()
+        private IUserService GetUserService()
         {
             IUnitOfWork _uow = new UnitOfWork();
-            CgDataContext _context = new CgDataContext(_uow);
-            IEmailService _emailService = new EmailService();
+            SecurityDataContext _context = new SecurityDataContext(_uow);
             IUserRepository _userRepository = new UserRepository(_uow, _context);
-            IUserPhotoRepository _photoRepository = new UserPhotoRepository(_uow, _context);
-            UserCommandHandler _handler = new UserCommandHandler(_userRepository, _photoRepository, _emailService);
-            IUserApplicationService userApp = new UserApplicationService(_uow, _userRepository, _handler);
+            var _handler = new UserCommandHandler(_userRepository);
+            IUserService userApp = new UserService(_userRepository, _handler);
             return userApp;
         }
     }

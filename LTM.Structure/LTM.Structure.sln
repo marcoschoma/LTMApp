@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B54AA239-B446-49E5-8237-25902628DA94}"
 EndProject
@@ -9,21 +9,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{8815DB3B-0692-4590-8214-BD9F3311805F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.WebAPI", "LTM.WebAPI\LTM.WebAPI.csproj", "{DD7F6C7A-24F6-4116-9484-EBF4449B6B34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.WebAPI", "LTM.WebAPI\LTM.WebAPI.csproj", "{DD7F6C7A-24F6-4116-9484-EBF4449B6B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Application", "LTM.Application\LTM.Application.csproj", "{FE7A3194-04E5-4407-9585-B21730DDA21C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Application", "LTM.Application\LTM.Application.csproj", "{FE7A3194-04E5-4407-9585-B21730DDA21C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Domain", "LTM.Domain\LTM.Domain.csproj", "{7B078B94-4144-476C-BCA2-B1635C0DDE35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Domain", "LTM.Domain\LTM.Domain.csproj", "{7B078B94-4144-476C-BCA2-B1635C0DDE35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.StartupConfig", "LTM.StartupConfig\LTM.StartupConfig.csproj", "{ED7000ED-CD20-4688-A369-3F4DAA55AAAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.StartupConfig", "LTM.StartupConfig\LTM.StartupConfig.csproj", "{ED7000ED-CD20-4688-A369-3F4DAA55AAAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{4CF5516B-5068-4B9A-B332-7E4E2BFD6C54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra", "LTM.Infra\LTM.Infra.csproj", "{9F7EBD9E-50EF-4F17-98B5-BDD22ED35E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Infra", "LTM.Infra\LTM.Infra.csproj", "{9F7EBD9E-50EF-4F17-98B5-BDD22ED35E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra.Data", "LTM.Infra.Data\LTM.Infra.Data.csproj", "{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Infra.Data", "LTM.Infra.Data\LTM.Infra.Data.csproj", "{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra.CrossCutting.IoC", "LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj", "{BE65E02E-7034-4365-9702-22C8869B01E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Infra.CrossCutting.IoC", "LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj", "{BE65E02E-7034-4365-9702-22C8869B01E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,6 @@
 ﻿using LTM.Domain;
 using LTM.Domain.Commands;
+using LTM.Domain.Commands.Handlers;
 using LTM.Domain.Commands.Results;
 using LTM.Domain.Repositories;
 using LTM.Domain.Services;
@@ -12,10 +13,14 @@ namespace LTM.Application.Services
 {
     public class ProductService : ApplicationService, IProductService
     {
-        //protected readonly IUnitOfWork _uow;
-        //private NotificationResult result;
-
         private readonly IProductRepository _repository;
+        private readonly ProductCommandHandler _handler;
+
+        public ProductService(IProductRepository repository, ProductCommandHandler handler)
+        {
+            _repository = repository;
+            _handler = handler;
+        }
 
         public Task<IEnumerable<ProductCommandResult>> GetAsync()
         {

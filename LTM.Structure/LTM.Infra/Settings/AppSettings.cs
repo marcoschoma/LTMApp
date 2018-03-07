@@ -10,5 +10,12 @@ namespace LTM.Infra.Settings
         {
             public static string DefaultConnection { get; set; }
         }
+
+        public sealed class Site
+        {
+            public static string UrlSite { get; set; }
+
+            public static string UrlApi { get; set; }
+        }
     }
 }

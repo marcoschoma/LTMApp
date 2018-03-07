@@ -7,8 +7,8 @@ namespace LTM.Infra.Data.Base
 {
     public abstract class Repository
     {
-        private readonly IUnitOfWork _uow;
-        private readonly DbContext _context;
+        protected readonly IUnitOfWork _uow;
+        protected readonly DbContext _context;
 
         public Repository(IUnitOfWork uow, DbContext context)
         {

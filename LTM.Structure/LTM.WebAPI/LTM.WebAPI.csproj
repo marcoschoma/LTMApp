@@ -4,13 +4,19 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp2.0\LTM.WebAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="1.0.0" />
+    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="2.0.0-rc2-final" />
+    <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0-rc2-final" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="2.2.0" />
   </ItemGroup>
 
@@ -19,7 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LTM.Application\LTM.Application.csproj" />
     <ProjectReference Include="..\LTM.Domain\LTM.Domain.csproj" />
+    <ProjectReference Include="..\LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\LTM.Infra.Data\LTM.Infra.Data.csproj" />
+    <ProjectReference Include="..\LTM.Infra\LTM.Infra.csproj" />
   </ItemGroup>
 
 </Project>
