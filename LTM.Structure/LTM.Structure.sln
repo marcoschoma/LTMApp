@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra", "LTM.Infra\LTM.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra.Data", "LTM.Infra.Data\LTM.Infra.Data.csproj", "{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LTM.Infra.CrossCutting.IoC", "LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj", "{BE65E02E-7034-4365-9702-22C8869B01E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE65E02E-7034-4365-9702-22C8869B01E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE65E02E-7034-4365-9702-22C8869B01E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE65E02E-7034-4365-9702-22C8869B01E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE65E02E-7034-4365-9702-22C8869B01E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{ED7000ED-CD20-4688-A369-3F4DAA55AAAB} = {8815DB3B-0692-4590-8214-BD9F3311805F}
 		{9F7EBD9E-50EF-4F17-98B5-BDD22ED35E6D} = {4CF5516B-5068-4B9A-B332-7E4E2BFD6C54}
 		{8AB8253C-5DB1-4170-BEE8-3884EB6FD278} = {4CF5516B-5068-4B9A-B332-7E4E2BFD6C54}
+		{BE65E02E-7034-4365-9702-22C8869B01E3} = {4CF5516B-5068-4B9A-B332-7E4E2BFD6C54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3395F49-9DEE-4E38-98B6-E408363D396A}
