@@ -25,7 +25,7 @@ export class BaseService {
         if (authentication) {
             headers = headers.set('Authorization', `Bearer ${authentication.access_token}`);
         }
-
+        console.log('gerando headers', headers);
         return headers;
     }
 
