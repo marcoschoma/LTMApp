@@ -1,9 +1,11 @@
 ﻿using LTM.Domain;
 using LTM.Domain.Commands.Handlers;
+using LTM.Domain.Commands.Input;
 using LTM.Domain.Commands.Results;
 using LTM.Domain.Repositories;
 using LTM.Domain.Services;
 using LTM.Infra;
+using LTM.Infra.Data.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +18,7 @@ namespace LTM.Application.Services
         private readonly IUserRepository _repository;
         private readonly UserCommandHandler _handler;
 
-        public UserService(IUserRepository repository, UserCommandHandler handler)
+        public UserService(IUnitOfWork uow, IUserRepository repository, UserCommandHandler handler) : base(uow)
         {
             _repository = repository;
             _handler = handler;
@@ -25,6 +27,13 @@ namespace LTM.Application.Services
         public async Task<UserCommandResult> GetUserByLoginAsync(string username)
         {
             return await _repository.GetUserByLoginAsync(username);
+        }
+
+        public async Task<NotificationResult> InsertAsync(InsertUserCommand insertUserCommand)
+        {
+            BeginTransaction();
+            var result = await _handler.InsertAsync(insertUserCommand);
+            return Commit(result);
         }
 
         public async Task<NotificationResult> IsValidUsernameAndPasswordAsync(string username, string password)
@@ -36,5 +45,7 @@ namespace LTM.Application.Services
         {
             return await _handler.ValidateUsernameAndTokenAsync(username, idUser);
         }
+
+
     }
 }

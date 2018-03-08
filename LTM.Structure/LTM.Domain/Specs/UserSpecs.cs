@@ -16,6 +16,7 @@ namespace LTM.Domain.Specs
             FirstName = x.FirstName,
             LastName = x.LastName,
             Email = x.Email,
+            Password = x.Password
         };
     }
 }

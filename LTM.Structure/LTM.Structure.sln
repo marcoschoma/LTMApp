@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B54AA239-B446-49E5-8237-25902628DA94}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Infra.Data", "LTM.Infra.Data\LTM.Infra.Data.csproj", "{8AB8253C-5DB1-4170-BEE8-3884EB6FD278}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LTM.Infra.CrossCutting.IoC", "LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj", "{BE65E02E-7034-4365-9702-22C8869B01E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2F14132C-F923-42BB-B736-0265FFAB1673}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

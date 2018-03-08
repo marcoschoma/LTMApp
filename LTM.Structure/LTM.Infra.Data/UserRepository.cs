@@ -1,4 +1,5 @@
 ﻿using LTM.Domain.Commands.Results;
+using LTM.Domain.Entities;
 using LTM.Domain.Repositories;
 using LTM.Domain.Specs;
 using LTM.Infra.Data.Base;
@@ -27,6 +28,22 @@ namespace LTM.Infra.Data
                 .Where(u => u.Username == username)
                 .Select(UserSpecs.AsUserCommandResult)
                 .FirstOrDefaultAsync();
+        }
+
+        public async Task<NotificationResult> InsertAsync(UserInfo item)
+        {
+            var result = new NotificationResult();
+            try
+            {
+                await _context.User.AddAsync(item);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                result.AddError(ex);
+                throw;
+            }
+            return result;
         }
     }
 }

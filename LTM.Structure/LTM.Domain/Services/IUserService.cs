@@ -1,4 +1,5 @@
-﻿using LTM.Domain.Commands.Results;
+﻿using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Results;
 using LTM.Infra;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace LTM.Domain.Services
         Task<NotificationResult> IsValidUsernameAndPasswordAsync(string username, string password);
         Task<NotificationResult> IsValidUsernameAndTokenAsync(string username, Guid? idUser);
         Task<UserCommandResult> GetUserByLoginAsync(string username);
+        Task<NotificationResult> InsertAsync(InsertUserCommand insertUserCommand);
     }
 }

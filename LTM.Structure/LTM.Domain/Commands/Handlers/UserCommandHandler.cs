@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using LTM.Domain.Commands.Input;
+using LTM.Domain.Entities;
 using LTM.Domain.Repositories;
 using LTM.Infra;
 
@@ -26,27 +28,46 @@ namespace LTM.Domain.Commands.Handlers
 
             var hashedPassword = Hash(password, passwordSalt);
 
+            if (user.Password == hashedPassword)
+            {
+                result.IsValid = true;
+                user.Password = null;
+                result.Data = user;
+            }
+            else
+            {
+                result.IsValid = false;
+                result.AddError("Invalid username/password");
+            }
             return result;
+        }
+
+        public async Task<NotificationResult> InsertAsync(InsertUserCommand userCommand)
+        {
+            
+            var item = new UserInfo(userCommand);
+            return await _userRepository.InsertAsync(item);
         }
 
         public async Task<NotificationResult> ValidateUsernameAndTokenAsync(string username, Guid? token)
         {
             var result = new NotificationResult();
+            var user = await _userRepository.GetUserByLoginAsync(username);
             return result;
         }
 
-        public static byte[] Hash(string value, string salt)
+        public static string Hash(string value, string salt)
         {
-            return Hash(Encoding.UTF8.GetBytes(value), Encoding.UTF8.GetBytes(salt));
+            return Hash(Encoding.Default.GetBytes(value), Encoding.Default.GetBytes(salt));
         }
 
-        public static byte[] Hash(byte[] value, byte[] salt)
+        public static string Hash(byte[] value, byte[] salt)
         {
             var saltedValue = new byte[value.Length + salt.Length];
             value.CopyTo(saltedValue, 0);
             salt.CopyTo(saltedValue, value.Length);
 
-            return new SHA256Managed().ComputeHash(saltedValue);
+            return Encoding.Default.GetString(new SHA256Managed().ComputeHash(saltedValue));
         }
     }
 }

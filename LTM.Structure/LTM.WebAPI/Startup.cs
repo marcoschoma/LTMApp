@@ -18,6 +18,7 @@ using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 using LTM.Infra.Settings;
 using LTM.WebAPI.DI;
+using LTM.Infra.Data.Contexts;
 
 namespace LTM.WebAPI
 {
@@ -71,6 +72,12 @@ namespace LTM.WebAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<LTMDataContext>();
+                context.Database.EnsureCreated();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
