@@ -11,6 +11,7 @@ namespace LTM.Infra.CrossCutting.IoC
         public static void Register(IServiceCollection services)
         {
             services.AddTransient<ProductCommandHandler, ProductCommandHandler>();
+            services.AddTransient<UserCommandHandler, UserCommandHandler>();
         }
     }
 }

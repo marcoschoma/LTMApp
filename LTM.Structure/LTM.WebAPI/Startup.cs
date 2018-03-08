@@ -94,6 +94,10 @@ namespace LTM.WebAPI
 
         private void InitializeAppSettings()
         {
+            var siteSection = Configuration.GetSection("Site");
+            AppSettings.Site.UrlApi = siteSection.GetValue<String>("UrlApi");
+            AppSettings.Site.UrlSite = siteSection.GetValue<String>("UrlSite");
+
             AppSettings.ConnectionStrings.DefaultConnection = Configuration.GetConnectionString("DefaultConnection");
         }
     }

@@ -6,7 +6,7 @@ namespace LTM.Domain.Entities
 {
     public class ProductInfo : EntityInfo
     {
-        public int? Id { get; set; }
+        public int? IdProduct { get; set; }
 
         public string Description { get; set; }
     }

@@ -14,7 +14,7 @@ namespace LTM.WebAPI.DI
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            DboIoC.Register(services);
+            LTMIoC.Register(services);
         }
     }
 }

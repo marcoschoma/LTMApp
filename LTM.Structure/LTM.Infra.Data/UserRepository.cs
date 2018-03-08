@@ -14,9 +14,9 @@ namespace LTM.Infra.Data
 {
     public class UserRepository : Repository, IUserRepository
     {
-        private readonly SecurityDataContext _context;
+        private readonly LTMDataContext _context;
 
-        public UserRepository(IUnitOfWork uow, SecurityDataContext context) : base(uow, context)
+        public UserRepository(IUnitOfWork uow, LTMDataContext context) : base(uow, context)
         {
             _context = context;
         }

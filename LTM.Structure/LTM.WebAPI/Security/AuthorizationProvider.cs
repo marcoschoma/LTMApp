@@ -93,7 +93,7 @@ namespace LTM.WebAPI.Security
         private IUserService GetUserService()
         {
             IUnitOfWork _uow = new UnitOfWork();
-            SecurityDataContext _context = new SecurityDataContext(_uow);
+            LTMDataContext _context = new LTMDataContext(_uow);
             IUserRepository _userRepository = new UserRepository(_uow, _context);
             var _handler = new UserCommandHandler(_userRepository);
             IUserService userApp = new UserService(_userRepository, _handler);

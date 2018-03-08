@@ -1,5 +1,6 @@
 ﻿using LTM.Domain.Entities;
 using LTM.Infra.Data.Base;
+using LTM.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Text;
 
 namespace LTM.Infra.Data.Contexts
 {
-    public class SecurityDataContext : DbContext
+    public class LTMDataContext : DbContext
     {
         private DbConnection _conn;
 
-        public SecurityDataContext(IUnitOfWork uow)
+        public LTMDataContext(IUnitOfWork uow)
         {
             _conn = uow.Connection;
             uow.AddContext(this);
@@ -25,6 +26,22 @@ namespace LTM.Infra.Data.Contexts
             this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_conn);
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            RegisterMaps(builder);
+        }
+
+        public static void RegisterMaps(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new UserMap());
+            builder.ApplyConfiguration(new ProductMap());
+        }
+
         public DbSet<UserInfo> User { get; set; }
+        public DbSet<ProductInfo> Product { get; set; }
     }
 }
