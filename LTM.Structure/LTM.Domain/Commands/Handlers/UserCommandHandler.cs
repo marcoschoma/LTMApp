@@ -1,4 +1,5 @@
 ﻿using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Input.User;
 using LTM.Domain.Entities;
 using LTM.Domain.Repositories;
 using LTM.Infra;

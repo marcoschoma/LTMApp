@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Input.Product;
 
 namespace LTM.Domain.Entities
 {
@@ -15,5 +16,6 @@ namespace LTM.Domain.Entities
         public int IdProduct { get; set; }
 
         public string Description { get; set; }
+        public IEnumerable<ProductPriceInfo> ProductPrices { get; set; }
     }
 }

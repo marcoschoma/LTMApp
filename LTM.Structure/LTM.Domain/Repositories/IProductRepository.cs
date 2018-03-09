@@ -10,7 +10,9 @@ namespace LTM.Domain.Repositories
 {
     public interface IProductRepository : IRepository<ProductInfo>
     {
-        Task<IEnumerable<ProductCommandResult>> GetAsync();
+        Task<ProductCommandResult> GetAsync(int idProduct);
+        Task<IEnumerable<ProductCommandResult>> GetAllAsync();
         Task<NotificationResult> InsertAsync(ProductInfo product);
+        Task<IEnumerable<ProductWithPriceCommandResult>> GetAllProductWithPriceAsync(DateTime referenceDate);
     }
 }

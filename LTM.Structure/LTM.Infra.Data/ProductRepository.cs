@@ -21,11 +21,27 @@ namespace LTM.Infra.Data
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductCommandResult>> GetAsync()
+        public async Task<IEnumerable<ProductCommandResult>> GetAllAsync()
         {
             return await _context.Product.AsNoTracking()
                 .Select(ProductSpecs.AsProductCommandResult)
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ProductWithPriceCommandResult>> GetAllProductWithPriceAsync(DateTime referenceDate)
+        {
+            return await _context.Product.AsNoTracking()
+                    .Include(p => p.ProductPrices.Where(pp => !pp.EndDate.HasValue || pp.EndDate > referenceDate))
+                    .Select(ProductSpecs.AsProductWithPriceCommandResult)
+                    .ToListAsync();
+        }
+
+        public async Task<ProductCommandResult> GetAsync(int idProduct)
+        {
+            return await _context.Product.AsNoTracking()
+                .Where(p => p.IdProduct == idProduct)
+                .Select(ProductSpecs.AsProductCommandResult)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<NotificationResult> InsertAsync(ProductInfo product)

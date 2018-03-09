@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LTM.Domain.Commands.Input
+namespace LTM.Domain.Commands.Input.User
 {
     public class UserRefreshTokenCommand
     {

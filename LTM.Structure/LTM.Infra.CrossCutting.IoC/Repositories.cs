@@ -12,6 +12,7 @@ namespace LTM.Infra.CrossCutting.IoC
         public static void Register(IServiceCollection services)
         {
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductPriceRepository, ProductPriceRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
         }
     }

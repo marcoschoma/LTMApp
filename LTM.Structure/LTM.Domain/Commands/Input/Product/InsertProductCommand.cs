@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LTM.Domain.Commands.Input
+namespace LTM.Domain.Commands.Input.Product
 {
     public class InsertProductCommand
     {

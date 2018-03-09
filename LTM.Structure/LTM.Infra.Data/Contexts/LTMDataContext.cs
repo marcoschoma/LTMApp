@@ -39,9 +39,11 @@ namespace LTM.Infra.Data.Contexts
         {
             builder.ApplyConfiguration(new UserMap());
             builder.ApplyConfiguration(new ProductMap());
+            builder.ApplyConfiguration(new ProductPriceMap());
         }
 
         public DbSet<UserInfo> User { get; set; }
         public DbSet<ProductInfo> Product { get; set; }
+        public DbSet<ProductPriceInfo> ProductPrice { get; set; }
     }
 }

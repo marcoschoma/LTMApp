@@ -1,5 +1,6 @@
 ﻿using LTM.Domain.Commands;
 using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Input.Product;
 using LTM.Domain.Commands.Results;
 using LTM.Infra;
 using System;
@@ -11,7 +12,10 @@ namespace LTM.Domain.Services
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductCommandResult>> GetAsync();
         Task<NotificationResult> InsertAsync(InsertProductCommand insertProductCommand);
+
+        Task<ProductCommandResult> GetAsync(int idProduct);
+        Task<IEnumerable<ProductCommandResult>> GetAllAsync();
+        Task<IEnumerable<ProductWithPriceCommandResult>> GetWithPrice(DateTime today);
     }
 }

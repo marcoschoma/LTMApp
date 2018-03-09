@@ -21,9 +21,30 @@ namespace LTM.WebAPI.Controllers
 
         // GET api/values
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAll()
         {
-            var result = await _service.GetAsync();
+            var result = await _service.GetAllAsync();
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            var result = await _service.GetAsync(id);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetWithCurrentPrice()
+        {
+            var result = await _service.GetWithPrice(DateTime.Today);
+            return Ok(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetWithCurrentPriceAtReferenceDate(DateTime referenceDate)
+        {
+            var result = await _service.GetWithPrice(referenceDate);
             return Ok(result);
         }
 

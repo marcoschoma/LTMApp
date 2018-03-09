@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Input.User;
 
 namespace LTM.Domain.Entities
 {

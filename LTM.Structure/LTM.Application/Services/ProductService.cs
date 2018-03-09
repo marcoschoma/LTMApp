@@ -2,6 +2,7 @@
 using LTM.Domain.Commands;
 using LTM.Domain.Commands.Handlers;
 using LTM.Domain.Commands.Input;
+using LTM.Domain.Commands.Input.Product;
 using LTM.Domain.Commands.Results;
 using LTM.Domain.Repositories;
 using LTM.Domain.Services;
@@ -26,9 +27,19 @@ namespace LTM.Application.Services
             _handler = handler;
         }
 
-        public async Task<IEnumerable<ProductCommandResult>> GetAsync()
+        public async Task<IEnumerable<ProductCommandResult>> GetAllAsync()
         {
-            return await _repository.GetAsync();
+            return await _repository.GetAllAsync();
+        }
+
+        public async Task<ProductCommandResult> GetAsync(int idProduct)
+        {
+            return await _repository.GetAsync(idProduct);
+        }
+
+        public async Task<IEnumerable<ProductWithPriceCommandResult>> GetWithPrice(DateTime refereceDate)
+        {
+            return await _repository.GetAllProductWithPriceAsync(refereceDate);
         }
 
         public async Task<NotificationResult> InsertAsync(InsertProductCommand insertProductCommand)
