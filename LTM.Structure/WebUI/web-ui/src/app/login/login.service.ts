@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/takeUntil';
@@ -44,13 +44,24 @@ export class LoginService extends BaseService {
     return login$;
   }
 
+  public startupTokenAuthentication(): void {
+    const authentication = super.getAuthentication();
+    if (authentication) {
+      if (+authentication.expiration_date > new Date().getTime()) {
+        this.refreshTokens();
+      } else {
+        this.logout();
+      }
+    }
+  }
+
   private refreshTokens(): void {
     const url = `${environment.apiUrl}/api/Account/refreshToken`;
     const authentication = super.getAuthentication();
     const data = { refresh_token: authentication.refresh_token };
     this.httpClient.post<NotificationResult>(url, data, { headers: this.getAuthHeaders() })
       .catch(err => this.handleError(err))
-      .takeUntil(this.ngUnsubscribe)
+      // .takeUntil(this.ngUnsubscribe)
       .subscribe(result => {
         this.authentication(result, authentication.remember);
       });
@@ -72,7 +83,7 @@ export class LoginService extends BaseService {
       authentication.remember = remember;
 //      this.authenticated = true;
       super.setAuthentication(authentication, remember);
-      this.scheduleRefreshToken(authentication.expires_in);
+      // this.scheduleRefreshToken(authentication.expires_in);
       console.log('get auth: ', super.getAuthentication());
     }
   }

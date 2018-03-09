@@ -6,6 +6,7 @@ using LTM.Domain.Repositories;
 using LTM.Domain.Services;
 using LTM.Infra;
 using LTM.Infra.Data.Base;
+using LTM.Infra.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;

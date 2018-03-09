@@ -4,6 +4,7 @@ using AspNet.Security.OpenIdConnect.Primitives;
 using AspNet.Security.OpenIdConnect.Server;
 using LTM.Application.Services;
 using LTM.Domain.Commands.Handlers;
+using LTM.Domain.Commands.Results;
 using LTM.Domain.Entities;
 using LTM.Domain.Repositories;
 using LTM.Domain.Services;
@@ -61,13 +62,13 @@ namespace LTM.WebAPI.Security
             {
                 context.Reject(
                     error: OpenIdConnectConstants.Errors.InvalidGrant,
-                    description: result.Errors.FirstOrDefault().Message
+                    description: result.GetErrors()
                 );
             }
             else
             {
                 var identity = new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
-                var user = result.Data as UserInfo;
+                var user = result.Data as UserCommandResult;
 
                 identity.AddClaim(OpenIdConnectConstants.Claims.Subject, user.IdUser.ToString());
                 identity.AddClaim(ClaimTypes.NameIdentifier, user.IdUser.ToString(), Destinations.AccessToken);
@@ -96,7 +97,7 @@ namespace LTM.WebAPI.Security
             LTMDataContext _context = new LTMDataContext(_uow);
             IUserRepository _userRepository = new UserRepository(_uow, _context);
             var _handler = new UserCommandHandler(_userRepository);
-            IUserService userApp = new UserService(_userRepository, _handler);
+            IUserService userApp = new UserService(_uow, _userRepository, _handler);
             return userApp;
         }
     }

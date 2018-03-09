@@ -30,6 +30,7 @@
     <ProjectReference Include="..\LTM.Infra.CrossCutting.IoC\LTM.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\LTM.Infra.Data\LTM.Infra.Data.csproj" />
     <ProjectReference Include="..\LTM.Infra\LTM.Infra.csproj" />
+    <ProjectReference Include="..\LTM.StartupConfig\LTM.StartupConfig.csproj" />
   </ItemGroup>
 
 </Project>

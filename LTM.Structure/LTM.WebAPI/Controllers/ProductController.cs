@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LTM.WebAPI.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ProductController : Controller
     {
         private IProductService _service;

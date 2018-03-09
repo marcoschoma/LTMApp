@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LTM.Domain.Commands.Results
+namespace LTM.Domain.Commands.Input
 {
-    public class ProductCommandResult
+    public class InsertProductCommand
     {
-        public int? IdProduct { get; set; }
-
+        public int IdProduct { get; set; }
         public string Description { get; set; }
     }
 }

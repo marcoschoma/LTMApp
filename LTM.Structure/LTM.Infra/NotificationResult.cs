@@ -8,12 +8,21 @@ namespace LTM.Infra
     {
         public bool IsValid { get; set; }
         public object Data { get; set; }
-        public IEnumerable<NotificationMessage> Messages { get; set; }
-        public IEnumerable<NotificationMessage> Errors { get; set; }
+        public IList<NotificationMessage> Messages { get; set; }
+        public IList<NotificationMessage> Errors { get; set; }
 
         public void AddError(object message)
         {
-            throw new NotImplementedException();
+            Errors.Add(new NotificationMessage()
+            {
+                Type = NotificationMessageType.Error,
+                Message = message != null ? message.ToString() : "Unspecified error"
+            });
+        }
+
+        public string GetErrors()
+        {
+            return Errors != null ? string.Join(", ", Errors) : "";
         }
 
         public class NotificationMessage

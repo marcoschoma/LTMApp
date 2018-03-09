@@ -1,9 +1,13 @@
 ﻿using LTM.Domain;
 using LTM.Domain.Commands;
 using LTM.Domain.Commands.Handlers;
+using LTM.Domain.Commands.Input;
 using LTM.Domain.Commands.Results;
 using LTM.Domain.Repositories;
 using LTM.Domain.Services;
+using LTM.Infra;
+using LTM.Infra.Data.Base;
+using LTM.Infra.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,15 +20,22 @@ namespace LTM.Application.Services
         private readonly IProductRepository _repository;
         private readonly ProductCommandHandler _handler;
 
-        public ProductService(IProductRepository repository, ProductCommandHandler handler)
+        public ProductService(IUnitOfWork uow, IProductRepository repository, ProductCommandHandler handler) : base(uow)
         {
             _repository = repository;
             _handler = handler;
         }
 
-        public Task<IEnumerable<ProductCommandResult>> GetAsync()
+        public async Task<IEnumerable<ProductCommandResult>> GetAsync()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAsync();
+        }
+
+        public async Task<NotificationResult> InsertAsync(InsertProductCommand insertProductCommand)
+        {
+            BeginTransaction();
+            var result = await _handler.InsertAsync(insertProductCommand);
+            return Commit(result);
         }
     }
 }

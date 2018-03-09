@@ -4,6 +4,7 @@ import { NotificationResult } from '../model/notification-result';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 import { BaseService } from '../base.service';
+import { Product } from '../model/product';
 
 @Injectable()
 export class ProductService extends BaseService {
@@ -11,12 +12,8 @@ export class ProductService extends BaseService {
         super();
     }
 
-    get(): Observable<NotificationResult> {
+    get(): Observable<Product[]> {
         const url = `${environment.apiUrl}/api/product`;
-        const getProducts$ = this.http.get<NotificationResult>(url, { headers: this.getAuthHeaders() });
-        getProducts$.subscribe((result) => {
-            console.log(result);
-        });
-        return getProducts$;
+        return this.http.get<Product[]>(url, { headers: this.getAuthHeaders() });
     }
 }

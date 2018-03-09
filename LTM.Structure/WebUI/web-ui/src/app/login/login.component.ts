@@ -10,6 +10,7 @@ import { BaseService } from '../base.service';
 })
 export class LoginComponent implements OnInit {
     model: any = {};
+    isLoading = false;
 
     constructor(private loginService: LoginService,
         private router: Router) {
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
         if (this.model.username && this.model.password) {
             this.loginService.login(this.model.username, this.model.password)
                 .subscribe(() => {
-                    console.log('partiu home');
+                    this.isLoading = true;
                     this.router.navigateByUrl('/home');
                 });
         }

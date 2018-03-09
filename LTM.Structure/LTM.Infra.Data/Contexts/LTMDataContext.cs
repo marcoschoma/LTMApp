@@ -1,4 +1,5 @@
-﻿using LTM.Infra.Data.Base;
+﻿using LTM.Domain.Entities;
+using LTM.Infra.Data.Base;
 using LTM.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -30,12 +30,12 @@ namespace LTM.Infra.Data
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<NotificationResult> InsertAsync(UserInfo item)
+        public async Task<NotificationResult> InsertAsync(UserInfo user)
         {
             var result = new NotificationResult();
             try
             {
-                await _context.User.AddAsync(item);
+                await _context.User.AddAsync(user);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)

@@ -11,21 +11,23 @@ export class BaseService {
 
     constructor() { }
 
-    protected getHeaders(apiVersion = '1.0'): HttpHeaders {
+    /*protected getHeaders(apiVersion = '1.0'): HttpHeaders {
         const headers = new HttpHeaders()
             .set('Accept', 'application/json')
             .set('x-api-version', apiVersion);
         return headers;
-    }
+    }*/
 
     protected getAuthHeaders(apiVersion = '1.0'): HttpHeaders {
-        let headers = this.getHeaders(apiVersion);
         const authentication = this.getAuthentication();
-
+        const headers = new HttpHeaders({
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'x-api-version': apiVersion});
         if (authentication) {
-            headers = headers.set('Authorization', `Bearer ${authentication.access_token}`);
+            headers.append('Authorization', `Bearer ${authentication.access_token}`);
         }
-        console.log('gerando headers', headers);
+        console.log('creating headers: ', headers);
         return headers;
     }
 
@@ -36,7 +38,7 @@ export class BaseService {
         if (!authentication) {
             authentication = JSON.parse(localStorage.getItem(key));
         }
-        console.log('authentication: ', authentication);
+        console.log('getAuthentication(): ', authentication);
         return authentication;
     }
 

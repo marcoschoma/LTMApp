@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LTM.Domain\LTM.Domain.csproj" />
+    <ProjectReference Include="..\LTM.Infra.Service\LTM.Infra.Service.csproj" />
     <ProjectReference Include="..\LTM.Infra\LTM.Infra.csproj" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 using LTM.Infra.Data.Base;
 using System;
 
-namespace LTM.Domain
+namespace LTM.Infra.Service
 {
     public abstract class ApplicationService
     {

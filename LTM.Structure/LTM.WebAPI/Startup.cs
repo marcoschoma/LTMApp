@@ -19,6 +19,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using LTM.Infra.Settings;
 using LTM.WebAPI.DI;
 using LTM.Infra.Data.Contexts;
+using LTM.StartupConfig;
 
 namespace LTM.WebAPI
 {
@@ -46,6 +47,8 @@ namespace LTM.WebAPI
                 x.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
 
+            services.AddCors();
+
             IoC.Register(services);
 
             // Add authentication.
@@ -60,6 +63,7 @@ namespace LTM.WebAPI
                 options.TokenEndpointPath = "/connect/token";
                 options.AllowInsecureHttp = true;
                 options.SigningCredentials.AddEphemeralKey();
+                options.AccessTokenLifetime = new TimeSpan(1, 1, 0);
             });
 
             services.AddSwaggerGen(c =>
@@ -76,6 +80,7 @@ namespace LTM.WebAPI
             {
                 var context = serviceScope.ServiceProvider.GetRequiredService<LTMDataContext>();
                 context.Database.EnsureCreated();
+                new LTMSeed(_services).EnsureSeedData();
             }
 
             if (env.IsDevelopment())
@@ -95,6 +100,13 @@ namespace LTM.WebAPI
 
             // Enabled authentication.
             app.UseAuthentication();
+
+            app.UseCors(x =>
+            {
+                x.AllowAnyHeader();
+                x.AllowAnyMethod();
+                x.AllowAnyOrigin();
+            });
 
             app.UseMvc();
         }
