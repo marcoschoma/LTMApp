@@ -16,11 +16,11 @@ export class LoginComponent implements OnInit {
         private router: Router) {
     }
 
-    login() {
+    onSubmit() {
+        this.isLoading = true;
         if (this.model.username && this.model.password) {
             this.loginService.login(this.model.username, this.model.password)
                 .subscribe(() => {
-                    this.isLoading = true;
                     this.router.navigateByUrl('/home');
                 });
         }
