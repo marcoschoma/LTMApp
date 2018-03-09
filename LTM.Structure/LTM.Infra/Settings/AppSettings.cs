@@ -13,8 +13,6 @@ namespace LTM.Infra.Settings
 
         public sealed class Site
         {
-            public static string UrlSite { get; set; }
-
             public static string UrlApi { get; set; }
         }
     }
