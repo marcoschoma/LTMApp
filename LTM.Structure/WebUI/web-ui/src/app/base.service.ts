@@ -27,7 +27,6 @@ export class BaseService {
         if (authentication) {
             headers.append('Authorization', `Bearer ${authentication.access_token}`);
         }
-        console.log('creating headers: ', headers);
         return headers;
     }
 
@@ -38,7 +37,6 @@ export class BaseService {
         if (!authentication) {
             authentication = JSON.parse(localStorage.getItem(key));
         }
-        console.log('getAuthentication(): ', authentication);
         return authentication;
     }
 

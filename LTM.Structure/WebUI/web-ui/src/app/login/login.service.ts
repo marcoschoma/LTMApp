@@ -38,7 +38,6 @@ export class LoginService extends BaseService {
     const url = `${environment.apiUrl}/api/Account/login`;
     const login$ = this.httpClient.post<NotificationResult>(url, data, { headers: this.getAuthHeaders() });
     login$.subscribe((result) => {
-      console.log('resultado: ', result);
       this.authentication(result, true);
     });
     return login$;
@@ -75,16 +74,12 @@ export class LoginService extends BaseService {
   }
 
   private authentication(result: NotificationResult, remember: boolean): void {
-    console.log('called authentication: ', result);
     if (result.isValid) {
       const authentication = result.data as TokenAuthentication;
       const now = new Date();
       authentication.expiration_date = new Date(now.getTime() + authentication.expires_in * 1000).getTime().toString();
       authentication.remember = remember;
-//      this.authenticated = true;
       super.setAuthentication(authentication, remember);
-      // this.scheduleRefreshToken(authentication.expires_in);
-      console.log('get auth: ', super.getAuthentication());
     }
   }
 }
