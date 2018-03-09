@@ -63,7 +63,7 @@ namespace LTM.WebAPI
                 options.TokenEndpointPath = "/connect/token";
                 options.AllowInsecureHttp = true;
                 options.SigningCredentials.AddEphemeralKey();
-                options.AccessTokenLifetime = new TimeSpan(1, 1, 0);
+                options.AccessTokenLifetime = new TimeSpan(0, 1, 0);
             });
 
             services.AddSwaggerGen(c =>
