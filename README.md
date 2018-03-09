@@ -33,5 +33,5 @@ Utilizando o terminal de sua preferência, acesse o diretório raíz da aplicaç
 
 # O autor
 
-Marcos desenvolve aplicações comerciais desde 2003 e já utilizou por linguagens como C#, Java e Python. Divide-se entre estudos e cuidados com seu filho, esposa e cachorrinha.
+Marcos desenvolve aplicações comerciais desde 2003 e já utilizou linguagens como C#, Java e Python. Divide-se entre estudos e cuidados com seu filho, esposa e cachorrinha.
 marcos.choma@gmail.com
