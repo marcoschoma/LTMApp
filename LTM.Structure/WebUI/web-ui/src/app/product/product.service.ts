@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { NotificationResult } from '../model/notification-result';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
-import { BaseService } from '../base.service';
+import { BaseService } from '../infra/base.service';
 
 @Injectable()
 export class ProductService extends BaseService {

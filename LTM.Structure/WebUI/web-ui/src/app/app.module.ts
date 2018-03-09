@@ -13,10 +13,10 @@ import { AuthGuard } from './login/auth.guard';
 import { routing } from './app.routing';
 
 import { HTTP_INTERCEPTORS, HttpClient, HttpHandler } from '@angular/common/http';
-import { TokenInterceptor } from './login/token.interceptor';
+import { TokenInterceptor } from './infra/token.interceptor';
 import { LoginService } from './login/login.service';
 import { ProductService } from './product/product.service';
-import { BaseService } from './base.service';
+import { BaseService } from './infra/base.service';
 
 @NgModule({
   declarations: [

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { ErrorObservable } from 'rxjs/Observable/ErrorObservable';
-import { environment } from './../environments/environment';
-import { TokenAuthentication } from './model/token-authentication';
+import { environment } from './../../environments/environment';
+import { TokenAuthentication } from './../model/token-authentication';
 
 @Injectable()
 export class BaseService {

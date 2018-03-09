@@ -1,4 +1,5 @@
-﻿using LTM.Infra.Data.Base;
+﻿using LTM.Domain.Entities;
+using LTM.Infra.Data.Base;
 using LTM.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
 
-namespace LTM.Infra.Data.Contexts
+namespace LTM.Infra.CrossCutting.IoC.Contexts
 {
     public class LTMDataContext : DbContext
     {
